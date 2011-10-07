@@ -51,11 +51,15 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Settings.fs" />
     <Compile Include="Forms.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SquadKnights.Core\SquadKnights.Core.fsproj">
+      <Name>SquadKnights.Core</Name>
+      <Project>{0ee297ca-82a6-493e-82b3-1c930b9061c4}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\SquadKnights.Entity\SquadKnights.Entity.fsproj">
       <Name>SquadKnights.Entity</Name>
       <Project>{aac010bd-78af-4e82-b804-3762414f9686}</Project>

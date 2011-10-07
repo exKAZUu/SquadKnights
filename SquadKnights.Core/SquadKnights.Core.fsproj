@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{aac010bd-78af-4e82-b804-3762414f9686}</ProjectGuid>
+    <ProjectGuid>{0ee297ca-82a6-493e-82b3-1c930b9061c4}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>SquadKnights.Entity</RootNamespace>
-    <AssemblyName>SquadKnights.Entity</AssemblyName>
+    <RootNamespace>SquadKnights.Core</RootNamespace>
+    <AssemblyName>SquadKnights.Core</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <Name>SquadKnights.Entity</Name>
+    <Name>SquadKnights.Core</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,7 +20,9 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
-    <DocumentationFile>bin\Debug\SquadKnights.Entity.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\SquadKnights.Core.XML</DocumentationFile>
+    <StartWorkingDirectory>
+    </StartWorkingDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,7 +31,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
-    <DocumentationFile>bin\Release\SquadKnights.Entity.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\SquadKnights.Core.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -44,21 +46,17 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Numerics" />
-    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Settings.fs" />
-    <Compile Include="ChipPoint.fs" />
-    <Compile Include="Utility.fs" />
-    <Compile Include="Landform.fs" />
-    <Compile Include="Affiliation.fs" />
-    <Compile Include="Action.fs" />
-    <Compile Include="Squad.fs" />
-    <Compile Include="UnitData.fs" />
-    <Compile Include="Unit.fs" />
-    <Compile Include="Tile.fs" />
-    <Compile Include="War.fs" />
-    <Compile Include="Images.fs" />
+    <Compile Include="UnitUtil.fs" />
+    <Compile Include="WarLoader.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SquadKnights.Entity\SquadKnights.Entity.fsproj">
+      <Name>SquadKnights.Entity</Name>
+      <Project>{aac010bd-78af-4e82-b804-3762414f9686}</Project>
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\FSharp\1.0\Microsoft.FSharp.Targets" Condition="!Exists('$(MSBuildBinPath)\Microsoft.Build.Tasks.v4.0.dll')" />
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft F#\v4.0\Microsoft.FSharp.Targets" Condition=" Exists('$(MSBuildBinPath)\Microsoft.Build.Tasks.v4.0.dll')" />
