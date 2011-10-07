@@ -13,7 +13,7 @@ open SquadKnights.Entity
 open Utility
 open ImageManager
 
-let loadLandform(line : string[]) =
+let parseLandImpact (line : string[]) =
     let next = iterator 1 line
     {
         LandHp = toInt(next());
@@ -24,7 +24,7 @@ let loadLandform(line : string[]) =
         MovCost = toFloat(next());
     }
 
-let loadUnitData (line : string[]) =
+let parseUnitData (line : string[]) =
     let next = iterator -1 line
     let name = next()
     let kind = next()
@@ -120,13 +120,13 @@ let readMapchip =
         Seq.mapi(fun x s -> (y * 10 + x, s)))
     >> Seq.collect (fun l -> l)
 
-let readLandform =
+let readLandImpacts =
     readCsv
-    >> Seq.map (fun l -> ((l.[0], l.[1]), loadLandform l))
+    >> Seq.map (fun l -> ((l.[0], l.[1]), parseLandImpact l))
 
 let readUnit =
     readCsv
-    >> Array.mapi (fun i line -> loadUnitData(line))
+    >> Array.mapi (fun i line -> parseUnitData line)
 
 let (|FilterEmpty|) =
     Seq.filter (fun (p, s) -> not <| System.String.IsNullOrWhiteSpace(s))
@@ -135,7 +135,7 @@ let loadWar iStage =
     let mapStr = "map" + iStage.ToString()
     let getDataPath fileName = Path.Combine("data", fileName)
     let (MapOfSeq mapchips) = readMapchip (getDataPath "mapchip.csv")
-    let (MapOfSeq landforms) = readLandform (getDataPath "landform.csv")
+    let (MapOfSeq landImpacts) = readLandImpacts (getDataPath "landform.csv")
     let units = readUnit (getDataPath "unit.csv")
 
     let (MapOfSeq tiles), mapSize = readMap (getDataPath (mapStr + "_tile1.csv"))
@@ -188,7 +188,7 @@ let loadWar iStage =
             SquadId = squadId
             IsLeader = leader.IsNone
             Data = data
-            Commands = commands
+            CommandAvailabilities = commands
             UnitImage = surface
         }
 
@@ -210,7 +210,7 @@ let loadWar iStage =
         leaderData
         |> Seq.map (fun (p, (ParseDeploy (aff, isLeader, iSquads, iUnits))) ->
             recordUsedId iSquads,
-            (p, { Wt = 0.0; IsStraggler = false },
+            (p, { Wt = 0.0; IsLeaderLive = false },
                 createUnit units.[iUnits] aff iSquads None))
 
     let (MapOfSeq units) =
@@ -223,7 +223,7 @@ let loadWar iStage =
     {
         Map = map
         MapSize = mapSize
-        Landforms = landforms
+        LandImpacts = landImpacts
         Units = units
         Squads = squads |> Map.map (fun _ (_, s, _) -> s)
         Time = 0.0

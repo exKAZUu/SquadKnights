@@ -3,20 +3,33 @@
 open Paraiba.Drawing
 open Paraiba.Drawing.Surfaces
 
+// ユニット
 type Unit =
     {
-        Hp : int;
-        Atk : int;
-        Def : int;
-        Skl : int;
-        Agi : int;
-        Mov : int;
-        Affiliation : Affiliation;
-        SquadId : int;
-        IsLeader : bool;
-        Data : UnitData;
-        Commands : Map<int, bool>
-        UnitImage : Surface;
+        /// HP
+        Hp : int
+        /// ATK
+        Atk : int
+        /// DEF
+        Def : int
+        /// SKL
+        Skl : int
+        /// AGI
+        Agi : int
+        /// MOV
+        Mov : int
+        /// 所属
+        Affiliation : Affiliation
+        /// 分隊ID
+        SquadId : int
+        /// リーダーか否か
+        IsLeader : bool
+        /// ユニットデータ（不変）
+        Data : UnitData
+        /// コマンド番号と使用可能か否かの対応表
+        CommandAvailabilities : Map<int, bool>
+        /// チップグラフィック
+        UnitImage : Surface
     }
 
     member this.IsLive
