@@ -74,5 +74,4 @@ let iterator start (array : 'a[]) =
     let value = ref start
     (fun () -> value := !value + 1; array.[!value])
 
-let mutable maxId = 0
-let recordUsedId id = maxId <- max maxId id; id
+let toSquadId id = id * 1<squad_id>

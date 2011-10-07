@@ -209,14 +209,14 @@ let loadWar iStage =
     let (MapOfSeq squads) =
         leaderData
         |> Seq.map (fun (p, (ParseDeploy (aff, isLeader, iSquads, iUnits))) ->
-            recordUsedId iSquads,
-            (p, { Wt = 0.0; IsStraggler = false },
+            iSquads |> toSquadId,
+            (p, { Wt = 0.0<time>; IsStraggler = false },
                 createUnit units.[iUnits] aff iSquads None))
 
     let (MapOfSeq units) =
         otherData
         |> Seq.map (fun (p, (ParseDeploy (aff, isLeader, iSquads, iUnits))) ->
-            let _, _, leader = squads |> Map.find iSquads
+            let _, _, leader = squads |> Map.find (iSquads |> toSquadId)
             p, createUnit units.[iUnits] aff iSquads (Some leader))
         |> Seq.append (squads |> Map.toSeq |> Seq.map (fun (_, (p, _, u)) -> p, u))
 
@@ -226,5 +226,5 @@ let loadWar iStage =
         Landforms = landforms
         Units = units
         Squads = squads |> Map.map (fun _ (_, s, _) -> s)
-        Time = 0.0
+        Time = 0.0<time>
     }

@@ -2,6 +2,6 @@
 
 type Squad =
     {
-        Wt : float
+        Wt : float<time>
         IsStraggler : bool
     }

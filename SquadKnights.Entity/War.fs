@@ -7,6 +7,6 @@ type War =
         /// TileKind, Data.BaseKind -> Landform
         Landforms : Map<string * string, Landform>;
         Units : Map<ChipPoint, Unit>
-        Squads : Map<int, Squad>
-        Time : float;
+        Squads : Map<int<squad_id>, Squad>
+        Time : float<time>;
     }
