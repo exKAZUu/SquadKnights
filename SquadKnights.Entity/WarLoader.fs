@@ -200,7 +200,8 @@ let loadWar iStage =
 
     let (|ParseDeploy|)(s : string) =
         s.Split([|'-'|])
-        |> (fun ss -> s.[0] |> parseAffiliation, s |> isLeader, ss.[1] |> toInt, ss.[2] |> toInt)
+        |> (fun ss -> s.[0] |> parseAffiliation, s |> isLeader,
+                      ss.[1] |> toInt |> toSquadId, ss.[2] |> toInt)
 
     let leaderData, otherData =
         unitData
@@ -209,14 +210,14 @@ let loadWar iStage =
     let (MapOfSeq squads) =
         leaderData
         |> Seq.map (fun (p, (ParseDeploy (aff, isLeader, iSquads, iUnits))) ->
-            iSquads |> toSquadId,
+            iSquads,
             (p, { Wt = 0.0<time>; IsStraggler = false },
                 createUnit units.[iUnits] aff iSquads None))
 
     let (MapOfSeq units) =
         otherData
         |> Seq.map (fun (p, (ParseDeploy (aff, isLeader, iSquads, iUnits))) ->
-            let _, _, leader = squads |> Map.find (iSquads |> toSquadId)
+            let _, _, leader = squads |> Map.find iSquads
             p, createUnit units.[iUnits] aff iSquads (Some leader))
         |> Seq.append (squads |> Map.toSeq |> Seq.map (fun (_, (p, _, u)) -> p, u))
 

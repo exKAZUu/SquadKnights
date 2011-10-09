@@ -12,7 +12,7 @@ type Unit =
         Agi : int;
         Mov : int;
         Affiliation : Affiliation;
-        SquadId : int;
+        SquadId : int<squad_id>;
         IsLeader : bool;
         Data : UnitData;
         Commands : Map<int, bool>
