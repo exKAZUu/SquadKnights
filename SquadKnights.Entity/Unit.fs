@@ -6,18 +6,8 @@ open Paraiba.Drawing.Surfaces
 // ユニット
 type Unit =
     {
-        /// HP
-        Hp : int
-        /// ATK
-        Atk : int
-        /// DEF
-        Def : int
-        /// SKL
-        Skl : int
-        /// AGI
-        Agi : int
-        /// MOV
-        Mov : int
+        /// 基本的なステータス補正
+        Status : Status
         /// 所属
         Affiliation : Affiliation
         /// 分隊ID
@@ -33,4 +23,4 @@ type Unit =
     }
 
     member this.IsLive
-        with get () = this.Hp > 0
+        with get () = this.Status.Hp > 0

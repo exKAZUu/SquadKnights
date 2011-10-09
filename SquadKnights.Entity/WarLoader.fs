@@ -13,27 +13,28 @@ open SquadKnights.Entity
 open Utility
 open ImageManager
 
+let parseStatus next =
+    {
+        Hp = toInt(next())
+        Atk = toInt(next()) 
+        Def = toInt(next())
+        Skl = toInt(next())
+        Agi = toInt(next())
+        Mov = toInt(next())
+    }
+
 let parseLandImpact (line : string[]) =
     let next = iterator 1 line
     {
-        LandHp = toInt(next());
-        LandAtk = toInt(next());
-        LandDef = toInt(next());
-        LandSkl = toInt(next());
-        LandAgi = toInt(next());
-        MovCost = toFloat(next());
+        LandStatus = parseStatus next
+        MovCost = toFloat(next())
     }
 
 let parseUnitData (line : string[]) =
     let next = iterator -1 line
     let name = next()
     let kind = next()
-    let mov = toInt(next())
-    let hp = toInt(next())
-    let atk = toInt(next())
-    let def = toInt(next())
-    let skl = toInt(next())
-    let agi = toInt(next())
+    let status = parseStatus next
     let chip =
         let path = Path.Combine("image", "unit", next())
         let surfaces =
@@ -63,32 +64,17 @@ let parseUnitData (line : string[]) =
             ActWidth = toInt(next())
         }
     let squadWidth = toInt(next())
-    let squadMov = toInt(next())
-    let squadAtk = toInt(next())
-    let squadDef = toInt(next())
-    let squadSkl = toInt(next())
-    let squadAgi = toInt(next())
-    let squadWt = toInt(next())
+    let squadStatus = parseStatus next
     {
-        BaseName = name;
-        BaseKind = kind;
-        BaseMov = mov;
-        BaseHp = hp;
-        BaseAtk = atk;
-        BaseDef = def;
-        BaseSkl = skl;
-        BaseAgi = agi;
-        BaseChip = chip;
-        BaseFace = face;
-        DefaultAction = defaultAction;
-        SpecialAction = specialAction;
-        SquadWidth = squadWidth;
-        SquadMov = squadMov;
-        SquadAtk = squadAtk;
-        SquadDef = squadDef;
-        SquadSkl = squadSkl;
-        SquadAgi = squadAgi;
-        SquadWt = squadWt;
+        BaseName = name
+        BaseKind = kind
+        BaseStatus = status
+        BaseChip = chip
+        BaseFace = face
+        DefaultAction = defaultAction
+        SpecialAction = specialAction
+        SquadWidth = squadWidth
+        SquadStatus = squadStatus
     }
 
 let readLines (path : string) =
@@ -135,7 +121,7 @@ let loadWar iStage =
     let mapStr = "map" + iStage.ToString()
     let getDataPath fileName = Path.Combine("data", fileName)
     let (MapOfSeq mapchips) = readMapchip (getDataPath "mapchip.csv")
-    let (MapOfSeq landImpacts) = readLandImpacts (getDataPath "landform.csv")
+    let (MapOfSeq landImpacts) = readLandImpacts (getDataPath "landimpact.csv")
     let units = readUnit (getDataPath "unit.csv")
 
     let (MapOfSeq tiles), mapSize = readMap (getDataPath (mapStr + "_tile1.csv"))
@@ -178,12 +164,7 @@ let loadWar iStage =
             | Some(_) -> data.BaseChip
         let commands = Seq.init 4 (fun i -> i, true) |> Map.ofSeq
         {
-            Hp = data.BaseHp
-            Atk = data.BaseAtk
-            Def = data.BaseDef
-            Skl = data.BaseSkl
-            Agi = data.BaseAgi
-            Mov = data.BaseMov
+            Status = data.BaseStatus
             Affiliation = aff
             SquadId = squadId
             IsLeader = leader.IsNone

@@ -3,7 +3,7 @@
 /// 分隊
 type Squad =
     {
-        /// WT
+        /// Waiting time（残り待機時間）
         Wt : float
         /// リーダーが生きているかどうか
         IsLeaderLive : bool

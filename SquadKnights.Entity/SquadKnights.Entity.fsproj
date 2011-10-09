@@ -50,6 +50,7 @@
     <Compile Include="Settings.fs" />
     <Compile Include="ChipPoint.fs" />
     <Compile Include="Utility.fs" />
+    <Compile Include="Status.fs" />
     <Compile Include="LandImpact.fs" />
     <Compile Include="Affiliation.fs" />
     <Compile Include="Action.fs" />
