@@ -7,6 +7,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SquadKnights.Entity", "Squa
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SquadKnights.Core", "SquadKnights.Core\SquadKnights.Core.fsproj", "{0EE297CA-82A6-493E-82B3-1C930B9061C4}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SquadKnights.Tests", "SquadKnights.Tests\SquadKnights.Tests.fsproj", "{740D7019-5A6E-4005-8FA1-3BAFFC77B59C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,16 @@ Global
 		{0EE297CA-82A6-493E-82B3-1C930B9061C4}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{0EE297CA-82A6-493E-82B3-1C930B9061C4}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{0EE297CA-82A6-493E-82B3-1C930B9061C4}.Release|x86.ActiveCfg = Release|Any CPU
+		{740D7019-5A6E-4005-8FA1-3BAFFC77B59C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{740D7019-5A6E-4005-8FA1-3BAFFC77B59C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{740D7019-5A6E-4005-8FA1-3BAFFC77B59C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{740D7019-5A6E-4005-8FA1-3BAFFC77B59C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{740D7019-5A6E-4005-8FA1-3BAFFC77B59C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{740D7019-5A6E-4005-8FA1-3BAFFC77B59C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{740D7019-5A6E-4005-8FA1-3BAFFC77B59C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{740D7019-5A6E-4005-8FA1-3BAFFC77B59C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{740D7019-5A6E-4005-8FA1-3BAFFC77B59C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{740D7019-5A6E-4005-8FA1-3BAFFC77B59C}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

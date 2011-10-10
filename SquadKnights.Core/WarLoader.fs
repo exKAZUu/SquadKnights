@@ -78,11 +78,7 @@ let parseUnitData (line : string[]) =
     }
 
 let readLines (path : string) =
-    seq {
-        use fr = new StreamReader(path, Paraiba.Text.XEncoding.SJIS)
-        while not fr.EndOfStream do
-            yield fr.ReadLine()
-    }
+    File.ReadLines(path, Paraiba.Text.XEncoding.SJIS)
 
 let readCsv path =
     path
@@ -118,8 +114,8 @@ let (|FilterEmpty|) =
     Seq.filter (fun (p, s) -> not <| System.String.IsNullOrWhiteSpace(s))
 
 let loadWar iStage =
-    let mapStr = "map" + iStage.ToString()
     let getDataPath fileName = Path.Combine("data", fileName)
+    let mapStr = "map" + iStage.ToString()
     let (MapOfSeq mapchips) = readMapchip (getDataPath "mapchip.csv")
     let (MapOfSeq landImpacts) = readLandImpacts (getDataPath "landimpact.csv")
     let units = readUnit (getDataPath "unit.csv")
@@ -133,7 +129,10 @@ let loadWar iStage =
             Map.map (fun p chipIds ->
                 match Map.tryFind p tiles with
                 | None -> chipIds
-                | Some(Int id) -> id::chipIds)
+                | Some(Int id) ->
+                    match chipIds with
+                    | head :: tail when head = id -> chipIds
+                    | _ -> id::chipIds)
 
         tiles
         |> Map.map (fun _ (Int chipId) -> [chipId])
