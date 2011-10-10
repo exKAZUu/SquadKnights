@@ -5,7 +5,7 @@ type Action =
     {
         /// 行為の種類
         ActKind : string
-        /// 行為の対象（Affiliationでは？）
+        /// 行為の対象（TODO: Affiliationでは？）
         ActTarget : string
         /// 行為の威力
         ActPower : int
