@@ -1,12 +1,19 @@
 ﻿namespace SquadKnights.Entity
 
+/// ゲーム状況
 type War =
     {
-        Map : Map<ChipPoint, Tile>;
-        MapSize : ChipSize;
-        /// TileKind, Data.BaseKind -> Landform
-        Landforms : Map<string * string, Landform>;
+        /// マップ
+        Map : Map<ChipPoint, Tile>
+        /// マップサイズ
+        MapSize : ChipSize
+        /// タイル種別とユニット種別の組み合わせと地形効果の対応表
+        /// Tile.TileKind, UnitData.BaseKind -> LandImpact
+        LandImpacts : Map<string * string, LandImpact>
+        /// マップ上の位置とユニットの対応表
         Units : Map<ChipPoint, Unit>
+        /// 分隊IDと分隊
         Squads : Map<int, Squad>
-        Time : float;
+        /// ゲーム内時間
+        Time : float
     }

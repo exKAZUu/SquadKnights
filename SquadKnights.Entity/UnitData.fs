@@ -8,25 +8,25 @@ open Paraiba.Drawing.Surfaces
 open Settings
 open Utility
 
+/// ユニットデータ（不変）
 type UnitData =
     {
+        /// ユニット名
         BaseName : string
-        BaseKind : string;
-        BaseMov : int;
-        BaseHp : int;
-        BaseAtk : int;
-        BaseDef : int;
-        BaseSkl : int;
-        BaseAgi : int;
-        BaseChip : Surface;
-        BaseFace : Surface;
-        DefaultAction : Action;
-        SpecialAction : Action;
-        SquadWidth : int;
-        SquadMov : int;
-        SquadAtk : int;
-        SquadDef : int;
-        SquadSkl : int;
-        SquadAgi : int;
-        SquadWt : int;
+        /// ユニットの種類
+        BaseKind : string
+        /// 基本的な基礎ステータス
+        BaseStatus : Status
+        /// 基礎チップグラフィック
+        BaseChip : Surface
+        /// 基礎顔グラフィック
+        BaseFace : Surface
+        /// 通常攻撃
+        DefaultAction : Action
+        /// 特殊攻撃
+        SpecialAction : Action
+        /// リーダー効果の範囲
+        SquadWidth : int
+        /// リーダーによるステータス補正
+        SquadRev : Status
     }
