@@ -28,5 +28,5 @@ type UnitData =
         /// リーダー効果の範囲
         SquadWidth : int
         /// リーダーによるステータス補正
-        SquadStatus : Status
+        SquadRev : Status
     }

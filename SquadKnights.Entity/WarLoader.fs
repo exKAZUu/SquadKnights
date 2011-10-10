@@ -26,7 +26,7 @@ let parseStatus next =
 let parseLandImpact (line : string[]) =
     let next = iterator 1 line
     {
-        LandStatus = parseStatus next
+        LandRev = parseStatus next
         MovCost = toFloat(next())
     }
 
@@ -64,7 +64,7 @@ let parseUnitData (line : string[]) =
             ActWidth = toInt(next())
         }
     let squadWidth = toInt(next())
-    let squadStatus = parseStatus next
+    let SquadRev = parseStatus next
     {
         BaseName = name
         BaseKind = kind
@@ -74,7 +74,7 @@ let parseUnitData (line : string[]) =
         DefaultAction = defaultAction
         SpecialAction = specialAction
         SquadWidth = squadWidth
-        SquadStatus = squadStatus
+        SquadRev = SquadRev
     }
 
 let readLines (path : string) =

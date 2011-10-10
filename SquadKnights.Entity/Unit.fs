@@ -6,7 +6,7 @@ open Paraiba.Drawing.Surfaces
 // ユニット
 type Unit =
     {
-        /// 基本的なステータス補正
+        /// 基本的なステータス
         Status : Status
         /// 所属
         Affiliation : Affiliation
