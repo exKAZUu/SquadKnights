@@ -1,9 +1,5 @@
 ﻿namespace SquadKnights.Entity
 
-/// マップを構成する1チップ
-[<Measure>]
-type chip
-
 /// マップの座標系
 type ChipPoint =
     {

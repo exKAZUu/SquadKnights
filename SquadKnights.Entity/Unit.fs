@@ -11,7 +11,7 @@ type Unit =
         /// 所属
         Affiliation : Affiliation
         /// 分隊ID
-        SquadId : int
+        SquadId : int<squad_id>
         /// リーダーか否か
         IsLeader : bool
         /// ユニットデータ（不変）

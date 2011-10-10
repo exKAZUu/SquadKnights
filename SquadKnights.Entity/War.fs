@@ -13,7 +13,7 @@ type War =
         /// マップ上の位置とユニットの対応表
         Units : Map<ChipPoint, Unit>
         /// 分隊IDと分隊
-        Squads : Map<int, Squad>
+        Squads : Map<int<squad_id>, Squad>
         /// ゲーム内時間
-        Time : float
+        Time : float<time>
     }

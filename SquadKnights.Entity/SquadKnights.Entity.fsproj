@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Settings.fs" />
+    <Compile Include="GameUnits.fs" />
     <Compile Include="ChipPoint.fs" />
     <Compile Include="Utility.fs" />
     <Compile Include="Status.fs" />
