@@ -4,7 +4,7 @@
 type Squad =
     {
         /// Waiting time（残り待機時間）
-        Wt : float<time>
+        Wt : float<day>
         /// リーダーが生きているかどうか
         IsLeaderLive : bool
     }

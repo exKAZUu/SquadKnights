@@ -5,7 +5,7 @@
 type chip
 
 [<Measure>]
-type time
+type day
 
 [<Measure>]
 type squad_id
