@@ -31,4 +31,5 @@ ipch/
 target
 output
 download
+*.dotCover
 *.docstates
