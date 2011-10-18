@@ -191,7 +191,7 @@ let loadWar iStage =
         leaderData
         |> Seq.map (fun (p, (ParseDeploy (aff, isLeader, iSquads, iUnits))) ->
             iSquads,
-            (p, { Wt = 0.0<time>; IsLeaderLive = false },
+            (p, { Wt = 0.0<day>; IsLeaderLive = false },
                 createUnit units.[iUnits] aff iSquads None))
 
     let (MapOfSeq units) =
@@ -207,5 +207,5 @@ let loadWar iStage =
         LandImpacts = landImpacts
         Units = units
         Squads = squads |> Map.map (fun _ (_, s, _) -> s)
-        Time = 0.0<time>
+        Time = 0.0<day>
     }

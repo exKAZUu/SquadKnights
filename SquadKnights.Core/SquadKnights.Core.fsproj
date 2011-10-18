@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="UnitUtil.fs" />
     <Compile Include="WarLoader.fs" />
+    <Compile Include="UnitAction.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SquadKnights.Entity\SquadKnights.Entity.fsproj">

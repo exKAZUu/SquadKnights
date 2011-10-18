@@ -15,5 +15,5 @@ type War =
         /// 分隊IDと分隊
         Squads : Map<int<squad_id>, Squad>
         /// ゲーム内時間
-        Time : float<time>
+        Time : float<day>
     }
