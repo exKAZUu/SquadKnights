@@ -122,7 +122,7 @@ let loadWar iStage =
 
     let (MapOfSeq tiles), mapSize = readMap (getDataPath (mapStr + "_tile1.csv"))
     let (FilterEmpty (MapOfSeq additionalTiles)), _ = readMap (getDataPath (mapStr + "_tile2.csv"))
-    let (FilterEmpty (ListOfSeq unitData)), _ = readMap (getDataPath (mapStr + "_unit1.csv"))
+    let (FilterEmpty (ListOfSeq unitData)), _ = readMap (getDataPath (mapStr + "_unit.csv"))
 
     let map =
         let mergeMap tiles =

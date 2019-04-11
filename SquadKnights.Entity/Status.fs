@@ -17,3 +17,12 @@ type Status =
         Mov : int
     }
 
+    override this.ToString() =
+        "{ Hp : " + this.Hp.ToString() +
+        ", Atk : " + this.Atk.ToString() +
+        ", Def : " + this.Def.ToString() +
+        ", Skl : " + this.Skl.ToString() +
+        ", Agi : " + this.Agi.ToString() +
+        ", Mov : " + this.Mov.ToString() +
+        " }";
+
